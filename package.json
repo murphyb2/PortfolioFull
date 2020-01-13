@@ -1,0 +1,35 @@
+{
+  "name": "PortfolioFull",
+  "version": "1.0.0",
+  "description": "Django project with all apps consolidated into one prjoect",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch ./PortfolioFull/frontend/src/index.js --output ./PortfolioFull/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./PortfolioFull/frontend/src/index.js --output ./PortfolioFull/frontend/static/frontend/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murphyb2/PortfolioFull.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murphyb2/PortfolioFull/issues"
+  },
+  "homepage": "https://github.com/murphyb2/PortfolioFull#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/preset-react": "^7.8.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
