@@ -1,6 +1,6 @@
 from rest_framework import serializers, fields
 from rest_framework.serializers import ImageField
-from devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About
 
 # Project serializer
 

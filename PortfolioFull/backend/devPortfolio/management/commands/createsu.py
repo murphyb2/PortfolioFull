@@ -7,3 +7,4 @@ class Command(BaseCommand):
         if not User.objects.filter(username="bryan").exists():
             User.objects.create_superuser("bryan", "brymurph@gmail.com", "L1quidpaper")
             self.stdout.write(self.style.SUCCESS('Successfully created new super user'))
+            print("Created new superuser")

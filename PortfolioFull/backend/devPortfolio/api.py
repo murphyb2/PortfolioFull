@@ -1,4 +1,4 @@
-from devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About
 from rest_framework import viewsets, permissions
 from .serializers import ProjectSerializer, AboutSerializer
 

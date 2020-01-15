@@ -1,5 +1,5 @@
 from django.contrib import admin
-from devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About
 
 
 class ProjectAdmin(admin.ModelAdmin):
