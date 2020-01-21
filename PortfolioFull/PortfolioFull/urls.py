@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('', include('frontend.urls')),
+    path('', include('frontend.urls')),
     path('', include('backend.devPortfolio.urls')),
     # path('', include('accounts.urls')),
     # path('', include('hiking.urls')),
