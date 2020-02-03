@@ -7,7 +7,7 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('', include('backend.devPortfolio.urls')),
     # path('', include('accounts.urls')),
-    path('', include('backend.hiking.urls')),
+    path('hiking/', include('backend.hiking.urls')),
     # path('', include('subway.urls')),
     path('admin/', admin.site.urls),
 ]

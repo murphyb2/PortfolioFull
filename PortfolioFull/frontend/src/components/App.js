@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, Switch } from "react-router";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
-import Dashboard from "./devPortfolio/Dashboard";
+import ProjectSplash from "./devPortfolio/ProjectSplash";
 import Hiking from "./hiking/Hiking";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Fragment>
+        <>
           <div className="container">
             <Switch>
+              <Route path="/" component={ProjectSplash} />
               <Route path="/hiking" component={Hiking} />
-              <Route path="/projects/" component={Dashboard} />
             </Switch>
           </div>
-          <Footer />
-        </Fragment>
+          {/* <Footer /> */}
+        </>
       </Router>
     );
   }
