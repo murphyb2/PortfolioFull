@@ -18,6 +18,7 @@ import store from "../store";
 // App Components
 import ProjectSplash from "./devPortfolio/ProjectSplash";
 import Hiking from "./hiking/Hiking";
+import Header from "./layout/Header";
 
 // Alert Options
 const alertOptions = {
@@ -32,6 +33,7 @@ class App extends Component {
         <AlertProvider template={AlertTemplate} {...alertOptions}>
           <Router>
             <>
+              <Header />
               <div className="container">
                 <Switch>
                   <Route path="/" component={ProjectSplash} />

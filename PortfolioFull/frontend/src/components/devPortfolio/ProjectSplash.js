@@ -7,12 +7,12 @@ import { getProjects } from "../../actions/projects";
 const ProjectSplash = () => {
   // Perform redux actions with useDispatch
   const dispatch = useDispatch();
+
   // Read the state using useSelector
   const projects = useSelector(state => state.projectReducer.projects);
 
   // Similar to componentDidMount lifecycle method
-  // Empty array argument prevents this from updating
-  // constantly
+  // Empty array argument prevents this from updating constantly
   useEffect(() => {
     dispatch(getProjects());
   }, []);
