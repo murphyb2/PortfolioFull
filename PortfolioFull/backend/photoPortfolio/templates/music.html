@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block content %}
+  <!-- Portfolio -->
+  <section class="portfolio">
+      {% load static %}
+      {% for image in img_gal %}
+        <!-- Spinner to cover images while they load -->
+        <div class="portfolio-imageContainer">
+          <img id="modal-btn" onclick="openModal({{ forloop.counter }})" src="{{ image.picture.url }}" alt="{{ image.alt_text }}">
+          <img class="spinner" src="{% static 'portfolio/circular-spinner-blue-transparent.gif' %}">
+        </div>
+      {% endfor %} 
+
+      <div class="modal-window">
+          <!-- Load the images again for the modal slider. CSS/JS will hide it until
+          an image is clicked. -->
+          <span class="close">&times;</span>
+          <div class="arrow previous">
+            <a></a>
+          </div>
+          {% for image in img_gal %}
+            <img class="slide" src="{{ image.picture.url }}" alt="{{ image.alt_text }}">
+          {% endfor %}
+          
+          <div class="arrow next">
+            <a></a>
+          </div>
+      </div>
+      
+  </section>
+  
+<script src="{% static 'portfolio/js/modal.js' %}"></script>
+{% endblock %}

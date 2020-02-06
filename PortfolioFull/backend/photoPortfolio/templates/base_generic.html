@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <title>PORTFOLIO</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet" >
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128907823-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128907823-1');
+  </script>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/styles.css' %}">
+  <link rel="shortcut icon" href="{% static 'portfolio/circled-b.png' %}">
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div class="loader">
+    </div>
+    <!-- Header -->
+    <header>
+      <section class="title-card">
+          <h1><a href="{% url 'index' %}">Bryan Murphy</a> / {% block title %}{% endblock %}</h1>
+      </section>
+
+      <!-- Navigation Bar -->
+      <nav class="main-nav">
+        <div class="menu-button">
+            <a></a>
+        </div>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'colorFilm' %}">35mm Color</a></li>
+            <li><a href="{% url 'bwFilm' %}">35mm B/W</a></li>
+            <li><a href="{% url 'music' %}">Music</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+        <div class="social-buttons">
+            <div class="social linkedin">
+                <div alt="f208" class="genericon genericon-linkedin-alt">
+                    <a href="https://www.linkedin.com/in/bryan-murphy-664020a0" target="_blank"></a>
+                </div>
+            </div>
+            <div class="social instagram">
+                <div alt="f200" class="genericon genericon-github">
+                    <a href="https://www.instagram.com/thecrimsonnchin/" target="_blank"></a>
+                </div>
+            </div>
+            <div class="social github">
+                <div alt="f215" class="genericon genericon-instagram">
+                    <a href="https://github.com/murphyb2" target="_blank"></a>
+                </div>
+            </div>
+        </div> 
+      </nav>
+
+    </header>
+    
+    <!-- Place the image slider here so it takes up the whole screen -->
+    {% block home-slider %}
+    {% endblock %}
+    <!-- Main Container -->
+    <div class="main">        
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-text">Bryan Murphy &copy; {{ currentYear }}</div>
+    </footer>
+    <!-- Let the entire page load then load JS scripts -->
+    <script src="{% static 'portfolio/js/main.js' %}"></script>
+    <script src="{% static 'portfolio/js/menuDropdown.js' %}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block home-slider %}
+  <!-- Portfolio -->
+  <section class="home-slider">
+    
+    <div class="arrow previous">
+            <a></a>
+    </div>
+    <div id="slider" >
+      {% load static %}
+      <!-- Spinner to cover images while they load -->
+      <img class="spinner" src="{% static 'portfolio/circular-spinner-blue-transparent.gif' %}">
+      {% for image in img_gal %}
+      <a href="{% url image.portfolio_section %}">
+        <div class="slide slide{{ image.id }} ">
+            
+            <style >
+              .slide{{ image.id }}{
+                background-image: url({{ image.picture.url }});
+              }
+            </style>
+            
+            <div class="slide-content">
+              <span>{{ image.portfolio_section }}</span>
+            </div>
+        </div>
+      </a>
+      {% endfor %}
+
+    </div>
+    <div class="arrow next">
+            <a></a>
+    </div>
+    
+  </section>
+{% endblock %}
