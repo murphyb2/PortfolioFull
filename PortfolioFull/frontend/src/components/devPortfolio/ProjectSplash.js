@@ -8,11 +8,14 @@ const ProjectSplash = () => {
   // Perform redux actions with useDispatch
   const dispatch = useDispatch();
   // Read the state using useSelector
-  // const projects = useSelector(state => state.projectReducer.projects);
   const projects = useSelector(state => state.projectReducer.projects);
 
   // Similar to componentDidMount lifecycle method
-  useEffect(() => dispatch(getProjects()));
+  // Empty array argument prevents this from updating
+  // constantly
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
 
   return (
     <Fragment>

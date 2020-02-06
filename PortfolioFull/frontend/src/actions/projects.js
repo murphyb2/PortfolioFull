@@ -16,7 +16,7 @@ import {
 
 // GET PROJECTS
 export const getProjects = () => (dispatch, getState) => {
-  console.log("getProjects");
+  console.log("getProjects action");
   axios
     .get("/api/projects/", tokenConfig(getState))
     .then(res => {
