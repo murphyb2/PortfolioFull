@@ -1,19 +1,18 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { Fragment, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+import { getProjects } from "../../actions/projects";
 
-static propTypes = {
-  projects: PropTypes.array.isRequired,
-  getProjects: PropTypes.func.isRequired
-};
-
-export default function ProojectSplash() {
-
+export default function ProjectSplash() {
+  const dispatch = useDispatch();
+  const projects = useCallback(() => dispatch({ type: "GET_PROJECTS" }), [
+    dispatch
+  ]);
   return (
     <Fragment>
       <div className="row">
-        {this.props.projects.map(project => (
+        {this.projects.map(project => (
           <div
             key={project.id}
             className="col-6 col-md col-lg col-xl w-auto my-3"
