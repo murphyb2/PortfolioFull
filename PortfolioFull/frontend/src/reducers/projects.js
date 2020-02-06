@@ -15,6 +15,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PROJECTS:
+      console.log("projects reducer: GET_PROJECTS");
       return {
         ...state,
         projects: action.payload

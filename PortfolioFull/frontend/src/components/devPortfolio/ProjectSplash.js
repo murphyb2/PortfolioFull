@@ -1,18 +1,23 @@
-import React, { Fragment, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import React, { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getProjects } from "../../actions/projects";
 
-export default function ProjectSplash() {
+const ProjectSplash = () => {
+  // Perform redux actions with useDispatch
   const dispatch = useDispatch();
-  const projects = useCallback(() => dispatch({ type: "GET_PROJECTS" }), [
-    dispatch
-  ]);
+  // Read the state using useSelector
+  // const projects = useSelector(state => state.projectReducer.projects);
+  const projects = useSelector(state => state.projectReducer.projects);
+
+  // Similar to componentDidMount lifecycle method
+  useEffect(() => dispatch(getProjects()));
+
   return (
     <Fragment>
       <div className="row">
-        {this.projects.map(project => (
+        {projects.map(project => (
           <div
             key={project.id}
             className="col-6 col-md col-lg col-xl w-auto my-3"
@@ -57,4 +62,6 @@ export default function ProjectSplash() {
       </div>
     </Fragment>
   );
-}
+};
+
+export default ProjectSplash;
