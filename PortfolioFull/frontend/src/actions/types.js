@@ -21,3 +21,7 @@ export const GET_ERRORS = "GET_ERRORS";
 
 // About Types
 export const GET_ABOUT = "GET_ABOUT";
+
+// Hiking
+export const UPDATE_USER_OPTIONS = "UPDATE_USER_OPTIONS"; // User entered location
+export const GET_TRAILS = "GET_TRAILS";
