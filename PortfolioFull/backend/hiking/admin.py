@@ -1,3 +1,9 @@
 from django.contrib import admin
+from backend.hiking.models import HikingKey
 
-# Register your models here.
+
+class HikingKeyAdmin(admin.ModelAdmin):
+    list_display = ('api_key',)
+
+
+admin.site.register(HikingKey, HikingKeyAdmin)
