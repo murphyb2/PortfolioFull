@@ -7,5 +7,6 @@ class HikingKeySerializer(serializers.ModelSerializer):
         model = HikingKey
 
         fields = (
+            'name',
             'api_key',
         )

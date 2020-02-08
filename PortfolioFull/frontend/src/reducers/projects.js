@@ -4,7 +4,6 @@ import {
   DELETE_PROJECT,
   ADD_PROJECT,
   CLEAR_PROJECTS
-  // } from "../actions/types.js";
 } from "../actions/types";
 
 const initialState = {

@@ -5,4 +5,6 @@ router = routers.DefaultRouter()
 router.register('api/projects', ProjectViewSet, basename='project')
 router.register('api/about', AboutViewSet, basename='about')
 
-urlpatterns = router.urls
+urlpatterns = [
+    router.urls
+]

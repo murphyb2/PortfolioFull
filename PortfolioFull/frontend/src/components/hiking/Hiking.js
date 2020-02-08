@@ -1,9 +1,20 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Hiking() {
+const Hiking = () => {
+  const dispatch = useDispatch();
+  const keys = useSelector(state => state.hikingReducer.keys);
+
+  // Get the relevant API keys and don't update again
+  useEffect(() => {
+    dispatch(getHikingKeys());
+  }, []);
+
   return (
-    <Fragment>
+    <>
       <h1>Hiking</h1>
-    </Fragment>
+    </>
   );
-}
+};
+
+export default Hiking;
