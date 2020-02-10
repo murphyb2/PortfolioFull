@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../actions/auth";
-import { getProjects } from "../../actions/projects";
+// import { logout } from "../../actions/auth";
+import { getProjects } from "../../../actions/projects";
 
 const Header = () => {
   // Perform redux actions with useDispatch

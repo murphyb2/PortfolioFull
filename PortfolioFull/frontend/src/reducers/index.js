@@ -5,14 +5,14 @@ import hikingKeys from "./hiking/keys";
 import errors from "./errors";
 // import messages from "./messages";
 import auth from "./auth";
-// import about from "./about";
+import about from "./projects/about";
 
 export default combineReducers({
   projectReducer: projects,
   errorReducer: errors,
   //   messagesReducer: messages,
   authReducer: auth,
-  //   aboutReducer: about
+  aboutReducer: about,
   hikingKeysReducer: hikingKeys,
   trailsReducer: trails
 });

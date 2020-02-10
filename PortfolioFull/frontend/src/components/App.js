@@ -17,9 +17,6 @@ import store from "../store";
 
 // App Components
 import Projects from "./devPortfolio/Projects";
-import ProjectSplash from "./devPortfolio/ProjectSplash";
-import ProjectDetail from "./devPortfolio/ProjectDetail";
-import Header from "./layout/Header";
 
 import Hiking from "./hiking/Hiking";
 
