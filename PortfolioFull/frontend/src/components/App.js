@@ -36,8 +36,8 @@ class App extends Component {
               <Header />
               <div className="container">
                 <Switch>
-                  <Route path="/" component={ProjectSplash} />
-                  <Route path="/hiking" component={Hiking} />
+                  <Route exact path="/" component={ProjectSplash} />
+                  <Route exact path="/hiking" component={Hiking} />
                 </Switch>
               </div>
               {/* <Footer /> */}

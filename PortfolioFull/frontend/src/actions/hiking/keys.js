@@ -4,7 +4,7 @@ import { GET_KEYS } from "../types";
 export const getHikingKeys = () => dispatch => {
   console.log("get keys action");
   axios
-    .get("api/hiking/keys")
+    .get("hiking/api/keys")
     .then(res => {
       dispatch({
         type: GET_KEYS,
