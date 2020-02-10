@@ -32,6 +32,8 @@ export const getProjects = () => (dispatch, getState) => {
 
 // GET PROJECTS
 export const getProjectDetail = id => (dispatch, getState) => {
+  console.log("getProjectDetail Action");
+
   axios
     .get(`/api/projects/${id}/`, tokenConfig(getState))
     .then(res => {
@@ -44,6 +46,12 @@ export const getProjectDetail = id => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+// The below actions are for handling a custom admin interface.
+// Currently this project uses the built in Django admin
+// interface.
+// These are left here for future reference if I ever get around
+// to building my own admin interface
 
 // DELETE PROJECT
 export const deleteProject = id => (dispatch, getState) => {

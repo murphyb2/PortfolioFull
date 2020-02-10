@@ -16,9 +16,12 @@ import { Provider } from "react-redux";
 import store from "../store";
 
 // App Components
+import Projects from "./devPortfolio/Projects";
 import ProjectSplash from "./devPortfolio/ProjectSplash";
-import Hiking from "./hiking/Hiking";
+import ProjectDetail from "./devPortfolio/ProjectDetail";
 import Header from "./layout/Header";
+
+import Hiking from "./hiking/Hiking";
 
 // Alert Options
 const alertOptions = {
@@ -33,13 +36,12 @@ class App extends Component {
         <AlertProvider template={AlertTemplate} {...alertOptions}>
           <Router>
             <>
-              <Header />
-              <div className="container">
-                <Switch>
-                  <Route exact path="/" component={ProjectSplash} />
-                  <Route exact path="/hiking" component={Hiking} />
-                </Switch>
-              </div>
+              <Switch>
+                <Route path="/" component={Projects} />
+
+                <Route path="/hiking" component={Hiking} />
+              </Switch>
+
               {/* <Footer /> */}
             </>
           </Router>
