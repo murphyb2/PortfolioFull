@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import { getProjects } from "../../actions/projects";
 
