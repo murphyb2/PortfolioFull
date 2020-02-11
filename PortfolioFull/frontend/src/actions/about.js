@@ -1,7 +1,7 @@
 import axios from "axios";
-import { returnErrors } from "../messages";
-import { tokenConfig } from "../auth";
-import { GET_ABOUT } from "../types";
+import { returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
+import { GET_ABOUT } from "./types";
 
 export const getAbout = id => (dispatch, getState) => {
   console.log("getAbout action");

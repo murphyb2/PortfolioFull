@@ -8,6 +8,7 @@ import {
   Redirect
 } from "react-router-dom";
 
+// Alerts
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 

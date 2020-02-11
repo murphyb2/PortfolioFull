@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 // import { getAbout } from "../actions/about";
-import { getAbout } from "../../actions/projects/about";
+import { getAbout } from "../../actions/about";
 
 const About = () => {
   const dispatch = useDispatch();
