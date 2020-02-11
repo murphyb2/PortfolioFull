@@ -7,8 +7,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
 import ProjectSplash from "./ProjectSplash";
 import ProjectDetail from "./ProjectDetail";
 import About from "./About";
@@ -16,7 +14,6 @@ import About from "./About";
 const Projects = () => {
   return (
     <>
-      <Header />
       <div className="container">
         <Switch>
           <Route exact path="/" component={ProjectSplash} />
@@ -24,7 +21,6 @@ const Projects = () => {
           <Route path="/about" component={About} />
         </Switch>
       </div>
-      <Footer />
     </>
   );
 };

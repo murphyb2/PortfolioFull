@@ -18,6 +18,8 @@ import store from "../store";
 
 // App Components
 import Projects from "./devPortfolio/Projects";
+import Header from "./devPortfolio/layout/Header";
+import Footer from "./devPortfolio/layout/Footer";
 
 import Hiking from "./hiking/Hiking";
 
@@ -35,12 +37,14 @@ class App extends Component {
           <Router>
             <>
               <Switch>
-                <Route path="/" component={Projects} />
-
-                <Route path="/hiking" component={Hiking} />
+                {/* Order matters here.. Hiking app doesnt use the same header/footer */}
+                <Route exact path="/hiking" component={Hiking} />
+                <Route path="/">
+                  <Header />
+                  <Projects />
+                  <Footer />
+                </Route>
               </Switch>
-
-              {/* <Footer /> */}
             </>
           </Router>
         </AlertProvider>
