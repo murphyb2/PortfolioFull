@@ -8,14 +8,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@_!dryj5w_n#ofc8%!xhw=j*7@8uyhmf*e)bk$b#ta)rq8@oh!'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY', '@_!dryj5w_n#ofc8%!xhw=j*7@8uyhmf*e)bk$b#ta)rq8@oh!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = [
     'localhost',
-    '127.0.0.1'
+    '127.0.0.1',
+    'www.bryan-murphy-dev.com',
+    'bryan-murphy-dev.com',
 ]
 
 
@@ -76,12 +79,6 @@ WSGI_APPLICATION = 'PortfolioFull.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {

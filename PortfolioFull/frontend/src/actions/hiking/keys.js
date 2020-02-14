@@ -2,7 +2,7 @@ import axios from "axios";
 import { GET_KEYS } from "../types";
 
 export const getHikingKeys = () => dispatch => {
-  console.log("get keys action");
+  // console.log("get keys action");
   axios
     .get("hiking/api/keys")
     .then(res => {

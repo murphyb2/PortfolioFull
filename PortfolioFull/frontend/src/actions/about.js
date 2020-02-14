@@ -4,7 +4,7 @@ import { tokenConfig } from "./auth";
 import { GET_ABOUT } from "./types";
 
 export const getAbout = id => (dispatch, getState) => {
-  console.log("getAbout action");
+  // console.log("getAbout action");
   axios
     .get(`/api/about/${id}/`, tokenConfig(getState))
     .then(res => {
