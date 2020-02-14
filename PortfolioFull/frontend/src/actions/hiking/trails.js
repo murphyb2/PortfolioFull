@@ -16,7 +16,6 @@ export const getNearbyTrails = (
   results,
   api_key
 ) => dispatch => {
-  console.log("getting nearby trails " + api_key);
   axios
     .get("https://www.hikingproject.com/data/get-trails", {
       params: {
@@ -24,8 +23,7 @@ export const getNearbyTrails = (
         lon: location[1],
         maxDistance: dist,
         maxResults: results,
-        key: "200462394-f52578031e3e05e015044245f248eff4"
-        // key: api_key
+        key: api_key
       }
     })
     .then(res => {
