@@ -1,7 +1,7 @@
 import { GET_KEYS } from "../../actions/types";
 
 const initialState = {
-  apiKeys: []
+  apiKeys: {}
 };
 
 export default function(state = initialState, action) {

@@ -9,4 +9,4 @@ class HikingKeyViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = HikingKeySerializer
 
-    queryset = HikingKey.objects.all()
+    queryset = HikingKey.objects.all().order_by('name')

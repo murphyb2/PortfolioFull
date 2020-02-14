@@ -1,9 +1,9 @@
-import React, { Component } from "./node_modules/react";
-import { connect } from "./node_modules/react-redux";
-import PropTypes from "./node_modules/prop-types";
-import { updateUserOptions } from "../../actions/trails";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { updateUserOptions } from "../../../actions/hiking/trails";
 
-import Geocode from "./node_modules/react-geocode";
+import Geocode from "react-geocode";
 
 export class GeocodeContainer extends Component {
   static propTypes = {
@@ -24,7 +24,7 @@ export class GeocodeContainer extends Component {
     e.preventDefault();
 
     // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-    Geocode.setApiKey("AIzaSyDJmck0cGFO7NBL1YV2bUkYyCetBlOp1-Y");
+    Geocode.setApiKey(this.props.apiKey);
     // Geocode.enableDebug();
     // Get latidude & longitude from address.
     Geocode.fromAddress(this.state.address).then(

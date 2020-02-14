@@ -10,7 +10,13 @@ export const updateUserOptions = options => dispatch => {
 };
 
 // Get trails based on user entered location
-export const getNearbyTrails = (location, dist, results) => dispatch => {
+export const getNearbyTrails = (
+  location,
+  dist,
+  results,
+  api_key
+) => dispatch => {
+  console.log("getting nearby trails " + api_key);
   axios
     .get("https://www.hikingproject.com/data/get-trails", {
       params: {
@@ -19,6 +25,7 @@ export const getNearbyTrails = (location, dist, results) => dispatch => {
         maxDistance: dist,
         maxResults: results,
         key: "200462394-f52578031e3e05e015044245f248eff4"
+        // key: api_key
       }
     })
     .then(res => {

@@ -1,174 +1,149 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getNearbyTrails } from "../../actions/trails";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getNearbyTrails } from "../../../actions/hiking/trails";
 
-export class TrailResults extends Component {
-  static propTypes = {
-    userLocation: PropTypes.array.isRequired,
-    getNearbyTrails: PropTypes.func.isRequired,
-    nearbyTrails: PropTypes.array,
-    maxDistance: PropTypes.number.isRequired,
-    maxResults: PropTypes.number.isRequired
-  };
-  state = {
-    featuredHikes: [],
-    normalHikes: [],
-    prevTrails: [],
-    prevMaxDist: 0,
-    prevMaxResults: 0,
-    prevUserLocation: []
-  };
-  componentDidMount() {
-    const { maxDistance, maxResults, userLocation, nearbyTrails } = this.props;
-    // Call API to get nearby trails
-    this.props.getNearbyTrails(userLocation, maxDistance, maxResults);
-  }
-  componentDidUpdate() {
-    const { maxDistance, maxResults, userLocation, nearbyTrails } = this.props;
-    const {
-      prevMaxDist,
-      prevMaxResults,
-      prevUserLocation,
-      prevTrails
-    } = this.state;
+const TrailResults = apiKey => {
+  const dispatch = useDispatch();
 
-    // Only get new trails if the props have actually changed
-    if (
-      !areEqual(prevTrails, nearbyTrails) ||
-      maxDistance !== this.state.prevMaxDist ||
-      maxResults !== this.state.prevMaxResults ||
-      userLocation !== prevUserLocation
-    ) {
-      // Call API to get nearby trails
-      this.props.getNearbyTrails(userLocation, maxDistance, maxResults);
+  const userLocation = useSelector(state => state.trailsReducer.userLocation);
+  const nearbyTrails = useSelector(
+    state => state.trailsReducer.nearbyTrails.trails
+  );
+  const maxDistance = useSelector(state => state.trailsReducer.maxDistance);
+  const maxResults = useSelector(state => state.trailsReducer.maxResults);
 
-      // Update previous vars
-      this.setState({ prevTrails: nearbyTrails });
-      this.setState({ prevMaxDist: maxDistance });
-      this.setState({ prevMaxResults: maxResults });
-      this.setState({ prevUserLocation: userLocation });
-    }
-  }
-  render() {
-    if (!this.props.nearbyTrails) {
-      return <Fragment />;
-    }
-    // If the API returned zero results, display a message to expand the search options
-    if (this.props.nearbyTrails.length < 1) {
-      return (
-        <h4 className="text-center">
-          No trails found! Try expanding your search radius...
-        </h4>
+  const [featuredHikes, setFeaturedHikes] = useState([]);
+  const [normalHikes, setNormalHikes] = useState([]);
+
+  useEffect(() => {
+    // js is weird..
+    if (apiKey.apiKey != "") {
+      dispatch(
+        getNearbyTrails(userLocation, maxDistance, maxResults, apiKey.apiKey)
       );
     }
+  }, [apiKey.apiKey, userLocation, maxDistance, maxResults]);
 
-    this.state.featuredHikes = this.props.nearbyTrails.filter(
-      trail => trail.type == "Featured Hike"
-    );
-    this.state.normalHikes = this.props.nearbyTrails.filter(
-      trail => trail.type == "Trail"
-    );
+  useEffect(() => {
+    if (nearbyTrails) {
+      setFeaturedHikes(
+        nearbyTrails.filter(trail => trail.type == "Featured Hike")
+      );
+      setNormalHikes(nearbyTrails.filter(trail => trail.type == "Trail"));
+    }
+  }, [nearbyTrails]);
+
+  if (!nearbyTrails) {
+    return <Fragment />;
+  }
+  // If the API returned zero results, display a message to expand the search options
+  if (nearbyTrails.length < 1) {
     return (
-      <Fragment>
-        <div className="container mt-4">
-          {/* Featured Hikes */}
-          {this.state.featuredHikes.map(trail => (
-            <div className="card my-3" key={trail.id}>
-              <h5
-                className="card-header"
-                //   style={{ backgroundColor: trail.difficulty }}
-              >
-                <div className="row justify-content-between">
-                  <div className="col">
-                    <strong>{trail.name}</strong>
-                    <div className="">
-                      Rating: {trail.stars} stars/{trail.starVotes} Votes
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="row">
-                      <strong>{trail.location}</strong>
-                    </div>
-                    <div className="row">
-                      Coordinates: {trail.latitude}, {trail.longitude}
-                    </div>
-                  </div>
-                </div>
-              </h5>
-
-              <div className="card-body">
-                <div className="row mx-1 mb-2">
-                  <p className="card-text">{trail.summary}</p>
-                </div>
-                <div className="row">
-                  <div className="col">
-                    <img src={trail.imgSmall} alt="" />
-                  </div>
-                  <div className="col">
-                    <div className="row">Distance: {trail.length} mi</div>
-                    <div className="row">
-                      Condition Status: {trail.conditionStatus}
-                    </div>
-                    <div className="row">
-                      Condition Details: {trail.conditionDetails}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-          {/* Normal Hikes */}
-          {this.state.normalHikes.map(trail => (
-            <div className="card my-3" key={trail.id}>
-              <div
-                className="card-header"
-                //   style={{ backgroundColor: trail.difficulty }}
-              >
-                <div className="row justify-content-between">
-                  <div className="col">
-                    {trail.name}
-                    <div className="">
-                      Rating: {trail.stars} stars/{trail.starVotes} Votes
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="row">
-                      <strong>{trail.location}</strong>
-                    </div>
-                    <div className="row">
-                      Coordinates: {trail.latitude}, {trail.longitude}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card-body">
-                <div className="row mx-1 mb-2">
-                  <p className="card-text">{trail.summary}</p>
-                </div>
-                <div className="row">
-                  <div className="col">
-                    <img src={trail.imgSmall} alt="" />
-                  </div>
-                  <div className="col">
-                    <div className="row">Distance: {trail.length} mi</div>
-                    <div className="row">
-                      Condition Status: {trail.conditionStatus}
-                    </div>
-                    <div className="row">
-                      Condition Details: {trail.conditionDetails}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Fragment>
+      <h4 className="text-center">
+        No trails found! Try expanding your search radius...
+      </h4>
     );
   }
-}
+
+  return (
+    <Fragment>
+      <div className="container mt-4">
+        {/* Featured Hikes */}
+        {featuredHikes.map(trail => (
+          <div className="card my-3" key={trail.id}>
+            <h5
+              className="card-header"
+              //   style={{ backgroundColor: trail.difficulty }}
+            >
+              <div className="row justify-content-between">
+                <div className="col">
+                  <strong>{trail.name}</strong>
+                  <div className="">
+                    Rating: {trail.stars} stars/{trail.starVotes} Votes
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="row">
+                    <strong>{trail.location}</strong>
+                  </div>
+                  <div className="row">
+                    Coordinates: {trail.latitude}, {trail.longitude}
+                  </div>
+                </div>
+              </div>
+            </h5>
+
+            <div className="card-body">
+              <div className="row mx-1 mb-2">
+                <p className="card-text">{trail.summary}</p>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <img src={trail.imgSmall} alt="" />
+                </div>
+                <div className="col">
+                  <div className="row">Distance: {trail.length} mi</div>
+                  <div className="row">
+                    Condition Status: {trail.conditionStatus}
+                  </div>
+                  <div className="row">
+                    Condition Details: {trail.conditionDetails}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* Normal Hikes */}
+        {normalHikes.map(trail => (
+          <div className="card my-3" key={trail.id}>
+            <div
+              className="card-header"
+              //   style={{ backgroundColor: trail.difficulty }}
+            >
+              <div className="row justify-content-between">
+                <div className="col">
+                  {trail.name}
+                  <div className="">
+                    Rating: {trail.stars} stars/{trail.starVotes} Votes
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="row">
+                    <strong>{trail.location}</strong>
+                  </div>
+                  <div className="row">
+                    Coordinates: {trail.latitude}, {trail.longitude}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-body">
+              <div className="row mx-1 mb-2">
+                <p className="card-text">{trail.summary}</p>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <img src={trail.imgSmall} alt="" />
+                </div>
+                <div className="col">
+                  <div className="row">Distance: {trail.length} mi</div>
+                  <div className="row">
+                    Condition Status: {trail.conditionStatus}
+                  </div>
+                  <div className="row">
+                    Condition Details: {trail.conditionDetails}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Fragment>
+  );
+};
 
 // Compare two arrays and return if they are equal
 const areEqual = (array1, array2) => {
@@ -197,14 +172,4 @@ const areEqual = (array1, array2) => {
   return true;
 };
 
-const mapStateToProps = state => ({
-  userLocation: state.trailsReducer.userLocation,
-  nearbyTrails: state.trailsReducer.nearbyTrails.trails,
-  maxResults: state.trailsReducer.maxResults,
-  maxDistance: state.trailsReducer.maxDistance
-});
-
-export default connect(
-  mapStateToProps,
-  { getNearbyTrails }
-)(TrailResults);
+export default TrailResults;
