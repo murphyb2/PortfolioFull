@@ -30,8 +30,8 @@ class MapPrep(models.Model):
         # r = requests.get(url, allow_redirects=True)
         # open('turnstile.csv', 'wb').write(r.content)
 
-        # exist = os.path.exists(os.path.join('', f'backend/subway/final.csv'))
-        exist = False
+        exist = os.path.exists(os.path.join('', f'backend/subway/final.csv'))
+        # exist = False
         if(not exist):
             stations = pd.read_csv(
                 os.path.join('', 'backend/subway/Stations.csv'))
