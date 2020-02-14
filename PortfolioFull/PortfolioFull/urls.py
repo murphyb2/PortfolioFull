@@ -9,7 +9,7 @@ urlpatterns = [
     path('photo/', include('backend.photoPortfolio.urls')),
     # path('', include('accounts.urls')),
     # path('hiking/', include('backend.hiking.urls')),
-    # path('', include('subway.urls')),
+    path('subway/', include('backend.subway.urls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

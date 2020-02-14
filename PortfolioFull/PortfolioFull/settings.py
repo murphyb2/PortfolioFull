@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.devPortfolio',
     'backend.hiking',
+    'backend.subway',
     'backend.photoPortfolio',
     'rest_framework',
     'frontend',
