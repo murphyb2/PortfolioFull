@@ -19,6 +19,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'www.bryan-murphy-dev.com',
     'bryan-murphy-dev.com',
+    'bryan-murphy.com',
+    'www.bryan-murphy.com',
 ]
 
 
