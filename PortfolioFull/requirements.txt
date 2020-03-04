@@ -1,7 +1,5 @@
 asgiref==3.2.3
 astroid==2.3.3  
-autopep8==1.4.4 
-awsebcli==3.17.1
 botocore==1.14.17
 branca==0.3.1
 cement==2.8.2
@@ -45,3 +43,7 @@ termcolor==1.1.0
 typed-ast==1.4.1
 urllib3==1.24.3
 wcwidth==0.1.8
+dj-database-url==0.5.0
+psycopg2-binary==2.7.6
+whitenoise==4.1.1
+boto3==1.12.13
