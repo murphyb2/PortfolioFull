@@ -17,6 +17,7 @@ DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'http://devportfolio-env.eba-rrmu3p2d.us-east-1.elasticbeanstalk.com/',
     'www.bryan-murphy-dev.com',
     'bryan-murphy-dev.com',
     'bryan-murphy.com',
