@@ -111,7 +111,7 @@ class MapPrep(models.Model):
                                 vals = record_scp.EXITS.sort_values(
                                     ascending=True)
 
-                                # Calculate the total entries
+                                # Calculate the total exits
                                 total_exits += vals.iloc[-1] - vals.iloc[0]
                     # Create new row of data
                     # Station, Entries, Exits, Latitude, Longitude, Time
@@ -172,18 +172,20 @@ class MapPrep(models.Model):
         # Apply Heat Map of entries into station
         folium.plugins.HeatMapWithTime(
             hm_with_time_entries, index=date_index, radius=25, control=True, name='Entries').add_to(m)
+        # Apply Heat Map of exits into station
+        # folium.plugins.HeatMapWithTime(
+        #     hm_with_time_exits, index=date_index, radius=25, control=True, name='Exits', overlay=False).add_to(m)
 
-        # HeatMapWithTimeAdditional(
-        #     hm_with_time_exits, radius=25, control=True, name='Exits', show=False).add_to(m)
+        HeatMapWithTimeAdditional(
+            hm_with_time_exits, radius=25, control=True, name='Exits', show=False).add_to(m)
 
-        # The layer control panel doesn't like this for some reason...
-        # "Cannot read property 'setZIndex' of undefined"
         # Create dataframe of subway lines
         lines = os.path.join('', 'backend/subway/SubwayLines.geojson')
         # Add the subway lines
         folium.GeoJson(lines, name='Subway Lines').add_to(m)
 
-        # Add layer control to the map
+        # Add layer control to the map - only add this after all layers
+        # have been created and added to the map
         folium.LayerControl().add_to(m)
 
         # Save the new map to the templates folder

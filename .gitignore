@@ -2,7 +2,8 @@ node_modules
 .vscode/settings.json
 PortfolioFull/media/
 *.zip
-
+*.pyc
+/__pycache__/*
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
