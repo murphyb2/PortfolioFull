@@ -8,7 +8,7 @@ export class MapParent extends Component {
     userLocation: PropTypes.array.isRequired,
     nearbyTrails: PropTypes.array,
     maxDistance: PropTypes.number.isRequired,
-    maxResults: PropTypes.number.isRequired
+    maxResults: PropTypes.number.isRequired,
   };
 
   render() {
@@ -19,21 +19,24 @@ export class MapParent extends Component {
     if (this.props.nearbyTrails === null) {
       return <Fragment />;
     }
-    return (
-      <MapContainer
-        // styles={containerStyles}
-        // userLocation={this.props.userLocation}
-        // nearbyTrails={this.props.nearbyTrails}
-        {...this.props}
-      />
-    );
+
+    if (this.props.apiKey)
+      return (
+        <MapContainer
+          // styles={containerStyles}
+          // userLocation={this.props.userLocation}
+          // nearbyTrails={this.props.nearbyTrails}
+          {...this.props}
+        />
+      );
+    else return <Fragment />;
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userLocation: state.trailsReducer.userLocation,
   nearbyTrails: state.trailsReducer.nearbyTrails.trails,
   maxResults: state.trailsReducer.maxResults,
-  maxDistance: state.trailsReducer.maxDistance
+  maxDistance: state.trailsReducer.maxDistance,
 });
 
 export default connect(mapStateToProps)(MapParent);

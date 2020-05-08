@@ -10,27 +10,27 @@ export class MapContainer extends Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
+    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
   };
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
   };
 
-  onClose = props => {
+  onClose = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
-        showingInfoWindow: false
+        showingInfoWindow: false,
       });
     }
   };
 
   render() {
     const mapStyles = {
-      height: "33vh"
+      height: "33vh",
       // width: "100vw"
     };
 
@@ -50,15 +50,15 @@ export class MapContainer extends Component {
           style={mapStyles}
           initialCenter={{
             lat: this.props.userLocation[0],
-            lng: this.props.userLocation[1]
+            lng: this.props.userLocation[1],
           }}
           center={{
             lat: this.props.userLocation[0],
-            lng: this.props.userLocation[1]
+            lng: this.props.userLocation[1],
           }}
         >
           {/* Add Marker for each trail in the array */}
-          {this.props.nearbyTrails.map(trail => (
+          {this.props.nearbyTrails.map((trail) => (
             <Marker
               key={trail.id}
               name={trail.name}
@@ -69,7 +69,7 @@ export class MapContainer extends Component {
               distance={trail.length}
               position={{
                 lat: trail.latitude,
-                lng: trail.longitude
+                lng: trail.longitude,
               }}
             />
           ))}
@@ -105,6 +105,6 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyDJmck0cGFO7NBL1YV2bUkYyCetBlOp1-Y"
-})(MapContainer);
+export default GoogleApiWrapper((props) => ({
+  apiKey: props.apiKey,
+}))(MapContainer);

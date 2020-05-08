@@ -23,7 +23,7 @@ function search(arr, key_name) {
 
 const Hiking = () => {
   const dispatch = useDispatch();
-  const keys = useSelector(state => state.hikingKeysReducer.apiKeys);
+  const keys = useSelector((state) => state.hikingKeysReducer.apiKeys);
 
   // Get the relevant API keys and don't update again
   useEffect(() => {
@@ -35,7 +35,7 @@ const Hiking = () => {
     <>
       <div className="container mt-4">
         <div className="sticky-top my-3">
-          <MapParent />
+          <MapParent apiKey={search(keys, "go")} />
         </div>
         <h1 className="d-none d-lg-inline">Discover Trails Near You</h1>
         <h3 className="d-lg-none">Discover Trails Near You</h3>

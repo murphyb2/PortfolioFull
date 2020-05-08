@@ -10,25 +10,26 @@ export class GeocodeContainer extends Component {
     userLocation: PropTypes.array.isRequired,
     updateUserOptions: PropTypes.func.isRequired,
     maxResults: PropTypes.number.isRequired,
-    maxDistance: PropTypes.number.isRequired
+    maxDistance: PropTypes.number.isRequired,
   };
 
   state = {
     address: "",
     localMaxDistance: 10,
-    localMaxResults: 10
+    localMaxResults: 10,
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     const { localMaxDistance, localMaxResults } = this.state;
     e.preventDefault();
 
     // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
+    // console.log(this.props.apiKey);
     Geocode.setApiKey(this.props.apiKey);
     // Geocode.enableDebug();
     // Get latidude & longitude from address.
     Geocode.fromAddress(this.state.address).then(
-      response => {
+      (response) => {
         const { lat, lng } = response.results[0].geometry.location;
         // Update search box with formatted address
         this.setState({ address: response.results[0].formatted_address });
@@ -37,24 +38,24 @@ export class GeocodeContainer extends Component {
         var options = [location, localMaxDistance, localMaxResults];
         this.props.updateUserOptions(options);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   };
 
   // Update local state with typed address
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ address: e.target.value });
   };
 
   // Update max distance option
-  setMaxDist = e => {
+  setMaxDist = (e) => {
     e.preventDefault();
     this.setState({ localMaxDistance: Number(event.target.value) });
   };
   // Update max results option
-  setMaxResults = e => {
+  setMaxResults = (e) => {
     e.preventDefault();
     this.setState({ localMaxResults: Number(event.target.value) });
   };
@@ -110,10 +111,10 @@ export class GeocodeContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userLocation: state.trailsReducer.userLocation,
   maxResults: state.trailsReducer.maxResults,
-  maxDistance: state.trailsReducer.maxDistance
+  maxDistance: state.trailsReducer.maxDistance,
 });
 
 export default connect(mapStateToProps, { updateUserOptions })(
