@@ -31,7 +31,7 @@ class MapPrep(models.Model):
         # open('turnstile.csv', 'wb').write(r.content)
 
         exist = os.path.exists(os.path.join('', f'backend/subway/final.csv'))
-        exist = False
+        # exist = False
         if(not exist):
             # Read the stations info
             stations = pd.read_csv(
