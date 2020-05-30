@@ -9,7 +9,7 @@ const ProjectSplash = () => {
   const dispatch = useDispatch();
 
   // Read the state using useSelector
-  const projects = useSelector(state => state.projectReducer.projects);
+  const projects = useSelector((state) => state.projectReducer.projects);
 
   // Similar to componentDidMount lifecycle method
   // Empty array argument prevents this from updating constantly
@@ -20,7 +20,7 @@ const ProjectSplash = () => {
   return (
     <Fragment>
       <div className="row">
-        {projects.map(project => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className="col-6 col-md col-lg col-xl w-auto my-3"
@@ -50,14 +50,16 @@ const ProjectSplash = () => {
                 >
                   Details
                 </NavLink>
-                <a
-                  className="btn btn-primary d-none d-lg-inline"
-                  href={project.url}
-                  target="_blank"
-                  role="button"
-                >
-                  Visit Site
-                </a>
+                {project.url && (
+                  <a
+                    className="btn btn-primary d-none d-lg-inline"
+                    href={project.url}
+                    target="_blank"
+                    role="button"
+                  >
+                    Visit Site
+                  </a>
+                )}
               </div>
             </div>
           </div>
