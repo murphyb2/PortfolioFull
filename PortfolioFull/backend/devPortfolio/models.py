@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     name = models.CharField(max_length=200)
     short_title = models.CharField(max_length=12, null=True)
-    url = models.URLField(max_length=200, unique=True)
+    url = models.URLField(max_length=200, unique=True, blank=True)
     description = models.TextField(max_length=2000, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     cover_image = models.ImageField(upload_to='pictures/', null=True)

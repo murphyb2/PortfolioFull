@@ -10,7 +10,7 @@ const ProjectDetail = () => {
   const dispatch = useDispatch();
 
   // Only dispatch the redux action if the url ID parameter changes
-  const project = useSelector(state => state.projectReducer.projectDetail);
+  const project = useSelector((state) => state.projectReducer.projectDetail);
   useEffect(() => {
     dispatch(getProjectDetail(id));
   }, [id]);
@@ -40,16 +40,16 @@ const ProjectDetail = () => {
                 {/* If In Progress, two columns with badge to left, link to right
                   Otherwise just one column with link */}
                 <div className="row">
-                  {/* <div className="col"> */}
-                  <a
-                    className="btn btn-primary"
-                    href={project.url}
-                    target="_blank"
-                    role="button"
-                  >
-                    Visit Site
-                  </a>
-                  {/* </div> */}
+                  {project.url && (
+                    <a
+                      className="btn btn-primary"
+                      href={project.url}
+                      target="_blank"
+                      role="button"
+                    >
+                      Visit Site
+                    </a>
+                  )}
                 </div>
                 {/* Right column with description and In Progress tag if applicable */}
                 <div className="row mt-md-3 mt-1">
