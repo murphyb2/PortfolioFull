@@ -1,6 +1,6 @@
 from rest_framework import serializers, fields
 from rest_framework.serializers import ImageField
-from backend.devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About, TechTag
 
 # Project serializer
 
@@ -28,4 +28,12 @@ class AboutSerializer(serializers.ModelSerializer):
         fields = (
             'prof_pic',
             'description'
+        )
+
+class TechTagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TechTag
+        fields = (
+            'tech'
         )

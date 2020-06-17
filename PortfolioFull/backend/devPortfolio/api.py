@@ -1,6 +1,6 @@
-from backend.devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About, TechTag
 from rest_framework import viewsets, permissions
-from .serializers import ProjectSerializer, AboutSerializer
+from .serializers import ProjectSerializer, AboutSerializer, TechTagSerializer
 
 # Project Viewset
 
@@ -21,3 +21,11 @@ class AboutViewSet(viewsets.ModelViewSet):
     serializer_class = AboutSerializer
 
     queryset = About.objects.all()
+
+class TechTagViewSet(viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
+    serializer_class = TechTagSerializer
+
+    queryset = TechTag.objects.all()
