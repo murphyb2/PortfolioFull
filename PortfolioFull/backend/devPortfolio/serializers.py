@@ -4,25 +4,30 @@ from backend.devPortfolio.models import Project, About, TechTag
 
 # Project serializer
 
-
-class ProjectSerializer(serializers.ModelSerializer):
+class TechTagSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Project
+        model = TechTag
+        fields = '__all__'
 
-        fields = (
-            'id',
-            'name',
-            'short_title',
-            'url',
-            'description',
-            'cover_image',
-            'inProgress'
-        )
+class ProjectSerializer(serializers.ModelSerializer):
+    tags = TechTagSerializer(many=True, read_only=True)
+    class Meta:
+        model = Project
+        fields = '__all__'
+        # fields = (
+        #     'id',
+        #     'name',
+        #     'short_title',
+        #     'url',
+        #     'description',
+        #     'cover_image',
+        #     'inProgress',
+        #     'tags'
+        # )
 
 
 class AboutSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = About
         fields = (
@@ -30,10 +35,4 @@ class AboutSerializer(serializers.ModelSerializer):
             'description'
         )
 
-class TechTagSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = TechTag
-        fields = (
-            'tech'
-        )

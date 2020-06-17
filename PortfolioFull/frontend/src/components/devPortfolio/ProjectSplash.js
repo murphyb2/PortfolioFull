@@ -9,18 +9,17 @@ const ProjectSplash = () => {
   const dispatch = useDispatch();
 
   // Read the state using useSelector
-  const projects = useSelector(state => state.projectReducer.projects);
+  const projects = useSelector((state) => state.projectReducer.projects);
 
   // Similar to componentDidMount lifecycle method
   // Empty array argument prevents this from updating constantly
   useEffect(() => {
     dispatch(getProjects());
   }, []);
-
   return (
     <Fragment>
       <div className="row">
-        {projects.map(project => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className="col-6 col-md col-lg col-xl w-auto my-3"
@@ -58,6 +57,13 @@ const ProjectSplash = () => {
                 >
                   Visit Site
                 </a>
+              </div>
+              <div className="card-footer text-muted">
+                {project.tags.map((tag) => (
+                  <span key={tag.id} className="mx-1 badge badge-primary">
+                    {tag.tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

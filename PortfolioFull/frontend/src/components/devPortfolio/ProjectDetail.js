@@ -10,7 +10,7 @@ const ProjectDetail = () => {
   const dispatch = useDispatch();
 
   // Only dispatch the redux action if the url ID parameter changes
-  const project = useSelector(state => state.projectReducer.projectDetail);
+  const project = useSelector((state) => state.projectReducer.projectDetail);
   useEffect(() => {
     dispatch(getProjectDetail(id));
   }, [id]);
@@ -21,11 +21,27 @@ const ProjectDetail = () => {
         <div className="col">
           {/* Title line row */}
           <div className="row">
-            <div className="col">
-              {/* Smaller text for smaller screens */}
-              <h1 className="d-none d-lg-block">{project.name}</h1>
-              <h3 className="d-lg-none">{project.name}</h3>
-            </div>
+            {/* <div className="col"> */}
+            {/* Smaller text for smaller screens */}
+            <h1 className="d-none d-lg-block">{project.name}</h1>
+            <h3 className="d-lg-none">{project.name}</h3>
+            {project.tags ? (
+              project.tags.map((tag) => (
+                <span key={tag.id} className="mx-1 my-auto badge badge-primary">
+                  {tag.tech}
+                  <img
+                    src={tag.icon}
+                    className="mx-1"
+                    width="auto"
+                    height="25"
+                    alt=""
+                  />
+                </span>
+              ))
+            ) : (
+              <h5></h5>
+            )}
+            {/* </div> */}
           </div>
 
           {/* One column. Image to left. Links and description to right. */}
