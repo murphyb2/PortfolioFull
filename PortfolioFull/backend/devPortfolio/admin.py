@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.devPortfolio.models import Project, About
+from backend.devPortfolio.models import Project, About, TechTag
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -15,3 +15,9 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 admin.site.register(About, AboutAdmin)
+
+class TechTagAdmin(admin.ModelAdmin):
+    list_display = ('tech',)
+
+
+admin.site.register(TechTag, TechTagAdmin)

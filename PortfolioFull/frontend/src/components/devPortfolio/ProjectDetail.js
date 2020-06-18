@@ -20,17 +20,38 @@ const ProjectDetail = () => {
       <div className="row">
         <div className="col">
           {/* Title line row */}
-          <div className="row">
-            <div className="col">
+          <div className="container">
+            <div className="row">
+              {/* <div className="col"> */}
               {/* Smaller text for smaller screens */}
               <h1 className="d-none d-lg-block">{project.name}</h1>
               <h3 className="d-lg-none">{project.name}</h3>
+              {project.tags ? (
+                project.tags.map((tag) => (
+                  <span
+                    key={tag.id}
+                    className="mx-1 my-auto badge badge-light border"
+                  >
+                    {tag.tech}
+                    <img
+                      src={tag.icon}
+                      className="mx-1"
+                      width="auto"
+                      height="15"
+                      alt=""
+                    />
+                  </span>
+                ))
+              ) : (
+                <h5></h5>
+              )}
+              {/* </div> */}
             </div>
           </div>
 
           {/* One column. Image to left. Links and description to right. */}
           <div className="container">
-            <div className="row">
+            <div className="row mt-3">
               {/* Left Column with image */}
               <div className="col-lg mb-3 mb-lg-0 mb-xl-0">
                 <img src={project.cover_image} className="img-fluid" alt="" />

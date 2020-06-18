@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class TechTag(models.Model):
+    tech = models.CharField(max_length=100)
+    icon = models.ImageField(upload_to='pictures/tech', null=True)
+
+    def __str__(self):
+        return self.tech
 
 class Project(models.Model):
     name = models.CharField(max_length=200)
@@ -10,6 +16,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     cover_image = models.ImageField(upload_to='pictures/', null=True)
     inProgress = models.BooleanField(default=False)
+    tags = models.ManyToManyField(TechTag, blank=True)
 
     def __str__(self):
         return self.name
@@ -23,3 +30,5 @@ class About(models.Model):
 
     def __str__(self):
         return ("About Page")
+
+
