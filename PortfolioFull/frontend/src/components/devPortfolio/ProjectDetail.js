@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectDetail } from "../../actions/projects";
 import { useParams } from "react-router-dom";
+import Highlight from "./Highlight";
 
 const ProjectDetail = () => {
   // Get the project ID from the URL ID parameter
@@ -76,11 +77,12 @@ const ProjectDetail = () => {
                 <div className="row mt-md-3 mt-1">
                   <p>
                     {project.inProgress > 0 && (
-                      <span className="badge badge-secondary mr-2">
-                        In Progress
-                      </span>
+                      <span className="badge badge-info mr-2">In Progress</span>
                     )}
-                    {project.description}
+                    <Highlight
+                      text={project.description}
+                      exp={project.keywords}
+                    />
                   </p>
                 </div>
               </div>
