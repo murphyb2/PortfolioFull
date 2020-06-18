@@ -54,14 +54,16 @@ const ProjectSplash = () => {
                 >
                   Details
                 </NavLink>
-                <a
-                  className="btn btn-primary d-none d-lg-inline"
-                  href={project.url}
-                  target="_blank"
-                  role="button"
-                >
-                  Visit Site
-                </a>
+                {project.url && (
+                  <a
+                    className="btn btn-primary d-none d-lg-inline"
+                    href={project.url}
+                    target="_blank"
+                    role="button"
+                  >
+                    Visit Site
+                  </a>
+                )}
               </div>
             </div>
           </div>
