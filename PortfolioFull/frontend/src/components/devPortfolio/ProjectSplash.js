@@ -60,8 +60,15 @@ const ProjectSplash = () => {
               </div>
               <div className="card-footer text-muted">
                 {project.tags.map((tag) => (
-                  <span key={tag.id} className="mx-1 badge badge-primary">
+                  <span key={tag.id} className="mx-1 badge badge-light border">
                     {tag.tech}
+                    <img
+                      src={tag.icon}
+                      className="mx-1"
+                      width="auto"
+                      height="15"
+                      alt=""
+                    />
                   </span>
                 ))}
               </div>
