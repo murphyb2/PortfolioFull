@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   // Read the state using useSelector
-  const projects = useSelector(state => state.projectReducer.projects);
+  const projects = useSelector((state) => state.projectReducer.projects);
 
   // Similar to componentDidMount lifecycle method
   // Empty array argument prevents this from updating constantly
@@ -23,7 +23,7 @@ const Header = () => {
         target="_blank"
         href="https://www.linkedin.com/in/bryan-murphy-664020a0/"
         role="button"
-        className="btn btn-primary mx-2"
+        className="btn btn-primary"
       >
         <i className="fab fa-linkedin-in" />
       </a>
@@ -31,7 +31,7 @@ const Header = () => {
         target="_blank"
         href="https://github.com/murphyb2"
         role="button"
-        className="btn btn-secondary mx-2"
+        className="btn btn-secondary"
       >
         <i className="fab fa-github" />
       </a>
@@ -40,7 +40,7 @@ const Header = () => {
         target="_blank"
         href="https://www.instagram.com/thecrimsonnchin/"
         role="button"
-        className="btn btn-success mx-2"
+        className="btn btn-success"
       >
         <i className="fab fa-instagram" />
       </a>
@@ -49,12 +49,12 @@ const Header = () => {
 
   return (
     <Fragment>
-      <div className="container-fluid bg-light">
+      <div className="container-fluid bg-light border-0">
         <div className="col-fluid">
-          <div className="jumbotron-fluid py-3">
+          <div className="jumbotron-fluid pt-3">
             <div className="container">
               <div className="row">
-                <Link className="text-decoration-none" to="/">
+                <Link className="text-decoration-none mx-auto" to="/">
                   <h1 className="text-primary font-weight-bold d-none d-lg-inline">
                     Bryan Murphy
                   </h1>
@@ -72,11 +72,11 @@ const Header = () => {
                   <div className="col-4">{socialButtons}</div>
                 </div> */}
             </div>
-            <hr className="my-2" />
+            {/* <hr className="my-2" /> */}
 
             <div className="row">
               <div className="container">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light p-0">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light px-0 border-0">
                   <button
                     className="navbar-toggler"
                     type="button"
@@ -115,7 +115,7 @@ const Header = () => {
                           className="dropdown-menu"
                           aria-labelledby="navbarDropdownMenuLink"
                         >
-                          {projects.map(project => (
+                          {projects.map((project) => (
                             <NavLink
                               key={project.id}
                               className="dropdown-item text-secondary"
