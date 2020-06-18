@@ -22,9 +22,10 @@ const ProjectSplash = () => {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="col-6 col-md col-lg col-xl w-auto my-1"
+            className="col-xl-6 col-6 w-auto mt-1"
+            // className="col-6 col-md col-lg col-xl w-auto my-1"
           >
-            <div className="card border-0 text-center">
+            <div className="card border-0 text-center mb-5">
               <h4 className="lead d-none d-sm-block card-title">
                 {project.name}
               </h4>
