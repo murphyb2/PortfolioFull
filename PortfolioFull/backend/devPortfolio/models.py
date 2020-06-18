@@ -1,12 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class TechTag(models.Model):
     tech = models.CharField(max_length=100)
     icon = models.ImageField(upload_to='pictures/tech', null=True)
 
     def __str__(self):
         return self.tech
+
+
+class TechKeywords(models.Model):
+    keywords = models.TextField(max_length=1000)
+
+    verbose_name_plural = "Tech Keywords"
+
+    def __str__(self):
+        return self.keywords
+
 
 class Project(models.Model):
     name = models.CharField(max_length=200)
@@ -17,6 +28,8 @@ class Project(models.Model):
     cover_image = models.ImageField(upload_to='pictures/', null=True)
     inProgress = models.BooleanField(default=False)
     tags = models.ManyToManyField(TechTag, blank=True)
+    keywords = models.ForeignKey(
+        TechKeywords, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -30,5 +43,3 @@ class About(models.Model):
 
     def __str__(self):
         return ("About Page")
-
-
