@@ -1,5 +1,5 @@
-# PortfolioFull
- Django project to showcase all my apps consolidated into one project. Updates and streamlines old version of the project to the newest React version to eliminate lifecycle methods through utilization of hooks.
+# Development Portfolio
+Django project to showcase all my apps consolidated into one project. Updates and streamlines old version of the project to the newest React version to eliminate lifecycle methods through utilization of hooks.
 
 Apps include:
 * Django Rest Framework backend and React/Redux front end composing the main website/project
