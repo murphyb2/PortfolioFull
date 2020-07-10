@@ -19,7 +19,7 @@ Namely:
 * RDS (MySQL)
 * S3
 
-## Built With
+## Key Technologies
 
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Django Rest Framework](https://www.django-rest-framework.org/) - The REST API framework used
