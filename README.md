@@ -1,5 +1,6 @@
 # Development Portfolio
-Django project to showcase all my apps consolidated into one project. Updates and streamlines old version of the project to the newest React version to eliminate lifecycle methods through utilization of hooks.
+Django project to centralize and showcase all my personal software projects. Updates and streamlines an old version of the project to the newest React version which eliminates lifecycle methods through utilization of hooks.
+All of the Django projects are were reconfigured to be included in this project so that I only need to spin up one EC2 instance on Amazon Web Services. This cuts my monthly bill in half! The performance difference at this point is nominal and this design decision is simply to save money. 
 
 Apps include:
 * Django Rest Framework backend and React/Redux front end composing the main website/project
