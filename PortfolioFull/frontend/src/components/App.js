@@ -2,11 +2,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import {
-  HashRouter as Router,
+  //   HashRouter as Router,
+  Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 // Alerts
 import { Provider as AlertProvider } from "react-alert";
@@ -23,20 +25,26 @@ import Hiking from "./hiking/Hiking";
 
 // React GA - Google Analytics
 import ReactGA from "react-ga";
-// ReactGA.initialize("UA-128907823-1");
-ReactGA.initialize("UA-128907823-1", { standardImplementation: true });
+
 // Alert Options
 const alertOptions = {
   timeout: 3000,
   position: "top center",
 };
 
+const history = createBrowserHistory();
+
 class App extends Component {
+  componentDidMount() {
+    ReactGA.initialize("UA-128907823-1");
+    history.listen((location) => ReactGA.pageview(location.pathname));
+  }
+
   render() {
     return (
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <Router>
+          <Router history={history}>
             <>
               <Switch>
                 {/* Order matters here.. Hiking app doesnt use the same header/footer */}
