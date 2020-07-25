@@ -24,8 +24,6 @@ import Hiking from "./hiking/Hiking";
 // React GA - Google Analytics
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-128907823-1");
-ReactGA.pageview(window.location.pathname + window.location.search);
-history.listen((location) => ReactGA.pageview(location.pathname));
 
 // Alert Options
 const alertOptions = {
