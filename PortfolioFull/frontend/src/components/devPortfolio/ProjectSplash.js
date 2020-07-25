@@ -58,7 +58,7 @@ const ProjectSplash = () => {
                 </NavLink>
                 {project.url && (
                   <ReactGA.OutboundLink
-                    eventLabel={project.short_title}
+                    eventLabel={project.name}
                     className="btn btn-primary d-none d-lg-inline"
                     to={project.url}
                     target="_blank"

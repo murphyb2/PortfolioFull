@@ -65,7 +65,7 @@ const ProjectDetail = () => {
                 <div className="row">
                   {project.url && (
                     <ReactGA.OutboundLink
-                      eventLabel={project.short_title}
+                      eventLabel={project.name}
                       className="btn btn-primary"
                       to={project.url}
                       target="_blank"
