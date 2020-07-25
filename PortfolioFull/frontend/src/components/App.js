@@ -5,7 +5,7 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 
 // Alerts
@@ -21,10 +21,16 @@ import Projects from "./devPortfolio/Projects";
 
 import Hiking from "./hiking/Hiking";
 
+// React GA - Google Analytics
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-128907823-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
+history.listen((location) => ReactGA.pageview(location.pathname));
+
 // Alert Options
 const alertOptions = {
   timeout: 3000,
-  position: "top center"
+  position: "top center",
 };
 
 class App extends Component {
