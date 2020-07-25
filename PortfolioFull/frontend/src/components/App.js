@@ -23,8 +23,8 @@ import Hiking from "./hiking/Hiking";
 
 // React GA - Google Analytics
 import ReactGA from "react-ga";
-ReactGA.initialize("UA-128907823-1");
-
+// ReactGA.initialize("UA-128907823-1");
+ReactGA.initialize("UA-128907823-1", { standardImplementation: true });
 // Alert Options
 const alertOptions = {
   timeout: 3000,
