@@ -37,6 +37,7 @@ const history = createHashHistory();
 class App extends Component {
   componentDidMount() {
     ReactGA.initialize("UA-128907823-1");
+    ReactGA.pageview("/");
     history.listen((location) => ReactGA.pageview(location.pathname));
   }
 
