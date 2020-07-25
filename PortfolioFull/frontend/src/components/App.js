@@ -8,7 +8,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { createHashHistory } from "history";
 
 // Alerts
 import { Provider as AlertProvider } from "react-alert";
@@ -32,7 +32,7 @@ const alertOptions = {
   position: "top center",
 };
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 
 class App extends Component {
   componentDidMount() {
