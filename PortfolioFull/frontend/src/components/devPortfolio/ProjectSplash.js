@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getProjects } from "../../actions/projects";
+import ReactGA from "react-ga";
 
 const ProjectSplash = () => {
   // Perform redux actions with useDispatch
@@ -56,14 +57,15 @@ const ProjectSplash = () => {
                   Details
                 </NavLink>
                 {project.url && (
-                  <a
+                  <ReactGA.OutboundLink
+                    eventLabel={project.short_title}
                     className="btn btn-primary d-none d-lg-inline"
-                    href={project.url}
+                    to={project.url}
                     target="_blank"
                     role="button"
                   >
                     Visit Site
-                  </a>
+                  </ReactGA.OutboundLink>
                 )}
               </div>
             </div>

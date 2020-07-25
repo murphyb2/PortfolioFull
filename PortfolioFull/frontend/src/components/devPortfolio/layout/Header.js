@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { logout } from "../../actions/auth";
 import { getProjects } from "../../../actions/projects";
+import ReactGA from "react-ga";
 
 const Header = () => {
   // Perform redux actions with useDispatch
@@ -19,31 +20,34 @@ const Header = () => {
 
   const socialButtons = (
     <div className="float-right">
-      <a
+      <ReactGA.OutboundLink
+        eventLabel="LinkedIn"
         target="_blank"
-        href="https://www.linkedin.com/in/bryan-murphy-664020a0/"
+        to="https://www.linkedin.com/in/bryan-murphy-664020a0/"
         role="button"
         className="btn btn-primary"
       >
         <i className="fab fa-linkedin-in" />
-      </a>
-      <a
+      </ReactGA.OutboundLink>
+      <ReactGA.OutboundLink
+        eventLabel="GitHub"
         target="_blank"
-        href="https://github.com/murphyb2"
+        to="https://github.com/murphyb2"
         role="button"
         className="btn btn-secondary"
       >
         <i className="fab fa-github" />
-      </a>
+      </ReactGA.OutboundLink>
 
-      <a
+      <ReactGA.OutboundLink
+        eventLabel="Instagram"
         target="_blank"
-        href="https://www.instagram.com/thecrimsonnchin/"
+        to="https://www.instagram.com/thecrimsonnchin/"
         role="button"
         className="btn btn-success"
       >
         <i className="fab fa-instagram" />
-      </a>
+      </ReactGA.OutboundLink>
     </div>
   );
 

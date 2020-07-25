@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjectDetail } from "../../actions/projects";
 import { useParams } from "react-router-dom";
 import { Highlight } from "./Highlight";
+import ReactGA from "react-ga";
 
 const ProjectDetail = () => {
   // Get the project ID from the URL ID parameter
@@ -63,14 +64,15 @@ const ProjectDetail = () => {
                   Otherwise just one column with link */}
                 <div className="row">
                   {project.url && (
-                    <a
+                    <ReactGA.OutboundLink
+                      eventLabel={project.short_title}
                       className="btn btn-primary"
-                      href={project.url}
+                      to={project.url}
                       target="_blank"
                       role="button"
                     >
                       Visit Site
-                    </a>
+                    </ReactGA.OutboundLink>
                   )}
                 </div>
                 {/* Right column with description and In Progress tag if applicable */}
