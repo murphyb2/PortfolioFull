@@ -64,15 +64,18 @@ const ProjectDetail = () => {
                   Otherwise just one column with link */}
                 <div className="row">
                   {project.url && (
-                    <ReactGA.OutboundLink
-                      eventLabel={project.name}
+                    <a
+                      //   eventLabel={project.name}
                       className="btn btn-primary"
-                      to={project.url}
+                      href={project.url}
                       target="_blank"
                       role="button"
+                      onClick={() =>
+                        ReactGA.pageview(`/${project.short_title}`)
+                      }
                     >
                       Visit Site
-                    </ReactGA.OutboundLink>
+                    </a>
                   )}
                 </div>
                 {/* Right column with description and In Progress tag if applicable */}
