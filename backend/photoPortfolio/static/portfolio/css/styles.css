@@ -1,0 +1,463 @@
+/* Variables */
+:root{
+    --primary: rgba(255, 255, 255, 0.8);
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    --modal-duration: .5s;
+}
+
+html{
+    box-sizing: border-box;
+    font-family: Oswald;
+    color: var(--dark);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    margin: 0;
+    line-height:  1.4;
+    min-height: 100vh;
+}
+.main{
+    flex: 1;
+    margin: auto 2vw;
+}
+
+.btn{
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* Header */
+header{
+    display: grid;
+    grid-template-areas: 'title-card main-nav';
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    margin-right: 2vw;
+    margin-left: 1vw;
+}
+.title-card{
+    /* border: 2px solid black; */
+    /* top right bottom left */
+    display: grid;
+    margin: 0 auto 0 0;
+    padding: 1vh 1vw; 
+    
+}
+h1, h2{
+    background-color: var(--primary);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+h1{
+    padding: 0.8rem;
+}
+
+h1 a{
+    text-decoration: none;
+    color: var(--dark);
+    /* Link is only in the name, not page title. So adjust padding
+    so it doesnt add extra in the middle of the box. */
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;    
+}
+
+/* Menu button for Nav Bar when window is small */
+.menu-button{
+    display: none;
+    font: normal 30px Genericons;
+}
+.menu-button a:before{
+    content: '\f419';
+}
+.menu-button a:hover{
+    cursor: pointer;
+}
+/* Navigation */
+.main-nav ul{
+    display: grid;
+    grid-gap: 20px;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.main-nav a{
+    background: var(--primary);
+    display: block;
+    text-decoration: none;
+    padding: 0.8rem; 
+    text-align: center;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+
+.main-nav a:hover{
+    background: var(--dark);
+    color: var(--light);
+}
+
+.main-nav{
+    /* top right bottom left */
+    margin: auto 0 auto auto;
+    /* border: 2px solid black; */
+}
+
+/* Social Icons */
+
+@font-face {
+    font-family: 'Genericons';
+    src: url("fonts/genericons/genericons-regular-webfont.woff") format("woff"), 
+    url("fonts/genericons/genericons-regular-webfont.eot") format("truetype");
+}
+.social-buttons{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(1rem, 4rem));
+    float: right;
+    justify-items: center;
+    grid-gap: 20px;
+    
+}
+.social{
+    font: normal 2rem Genericons;
+    z-index: 70;
+    text-decoration: none;
+}
+.social a{
+    justify-self: center;
+    padding: 10%;
+    width: 2rem;
+    height: 2rem;
+
+    /* box-shadow: none;
+    background: none; */
+    font-size: 2rem;
+}
+.linkedin a:before {
+    content: '\f208';
+}
+.instagram a:before {
+    content: '\f215';
+}
+.github a:before {
+    content: '\f200';
+}
+
+/* Portfolio Images */
+.portfolio{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    /* border: 2px solid black; */
+    border: 0;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    
+}
+.portfolio-imageContainer{
+    /* Conainer for specific portfolio image and loading spinner */
+    position: relative;
+}
+
+/* Loading Spinners */
+.spinner{
+    height: 10%;
+    width: auto;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* Home Slider */
+#slider,
+.home-slider,
+.slide-content {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+}
+.home-slider {
+    position: fixed;
+    top: 0;
+}
+.slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#slider a {
+    text-decoration: none;
+}
+.slide-content span {
+    color: var(--dark);
+    background: var(--primary);
+    padding: 0.8rem; 
+    text-align: center;
+    text-transform: uppercase;
+    position: fixed;
+    left: 2vw;
+    bottom: 2vh;
+    font-size: 1.5em;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    font: bold 6rem Genericons;
+    z-index: 70;
+    text-decoration: none;
+    color: transparent;
+}
+.previous a{
+    position: fixed;
+    color: var(--light);
+    left: 0;
+    margin-left: 30px;
+    transform: translateY(-50%);
+}
+.previous a:hover{
+    color: var(--dark);
+}
+.previous a:before {
+    content: '\f430';
+}
+
+.next a{
+    position: fixed;
+    color: var(--light);
+    right: 0;
+    margin-right: 30px;
+    transform: translateY(-50%);
+}
+.next a:hover{
+    color: var(--dark);
+}
+.next a:before {
+    content: '\f429';
+}
+
+/* Modal Gallery */
+.modal-window{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 60;
+    /* Hide all the images until the smaller one is clicked */
+    display: none;
+    /* probably dont need to define so many boxes now that the image and
+    arrows are centered in the screen with fixed position and 50% margins */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+#modal-btn{
+    width: 100%;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 0;
+    /* outline: white dashed 0px; */
+}
+
+#modal-btn:hover {
+    cursor: pointer;
+}
+
+.modal-window img { /* DEFINE A MORE SPECIFIC IDENTIFIER THAN IMG, IT CAUSES ISSUES */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    /* Just in case the screen is huge we dont want the image
+    extending down past the edge */
+    max-height: 90%;
+}
+
+.close{
+    color: #ccc;
+    justify-self: center;
+    align-self: center;
+    font-size: 4rem;
+    color: #fff;
+    grid-column: 5;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* About Page */
+.about {
+    display: grid;
+    grid-template-areas: 'img' 'p';
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+/* Footer  */
+footer{
+    color: var(--light);
+    text-align: center;
+    padding: 2vh 2vw;
+    position: sticky;
+    bottom: 0;
+    /* border: 2px solid black; */
+}
+.footer-text{
+    color: var(--dark);
+    padding: .5rem;
+    margin: 0 auto;
+}
+
+/* Keyframes */
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media Queries */
+
+@media(max-width: 1000px){
+    .title-card{
+        /* border: 2px solid red; */
+        margin: 0;
+        text-align: center;
+    }
+    header{
+        grid-template-areas: 'title-card' 'main-nav';
+    }
+    h1{
+        margin: 0;
+    }
+    .main-nav{
+        margin: 0;
+        display: grid; 
+        grid-template-rows: repeat(3, 1fr);
+        border-radius: 5px;
+        transition: all 0.2s ease-in;
+        /* grid-template-areas: 'menu-button' 'ul' 'social-buttons'; */
+    }
+    .main-nav ul{
+        grid-template-columns: 1fr;
+        width: 25%;
+        /* Hide the nav bar until the menu button is clicked */
+        display: none;
+        margin: 0 auto;
+        transition: all 0.4s ease-in 0.1s;
+    }
+    .social-buttons{
+        /* Hide the nav bar until the menu button is clicked */
+        display: none;
+        margin: 20px auto;
+        transition: all 0.4s ease-in 0.1s;
+    }
+    .menu-button{
+        display: grid;
+        padding: 0.8rem;
+        width: 50%;
+        margin: 0 auto;
+        grid-row-end: span 3;
+    }
+}
+
+/* If the window size goes back above 1000 and the menu buttons are hidden */
+@media(min-width: 1001px){
+    .main-nav{
+        /* For some reason this doesn't seem to always work.
+        Chalking it up as a known bug that probably won't happen all that often.
+        Ill revisit it another time... */
+        background-color: rgba(0,0,0,0);
+    }
+    .menu-button{
+        display: none;
+    }
+    .social-buttons{
+        /* Hide the nav bar until the menu button is clicked */
+        display: grid;
+        
+    }
+    .main-nav ul{
+        display: grid;
+    }
+}
+
+@media(max-width: 775px){
+    .title-card{
+        grid-template-areas: 'h1' 'h2';
+    }
+
+    /* Reduce the title card font size to it doesn't take up so much screen space */
+    .title-card h1{
+        font-size: smaller;
+    }
+
+    /* Reduce font size in the dropdown menu so the text all fits on one line */
+    .main-nav ul li a{
+        font-size: x-small;
+    }
+
+    /* Reduce the section tag font size to it doesn't take up so much screen space */
+    .slide-content span{
+        font-size: x-small;
+    }
+
+    /* Reduce arrow size and shift them a little closer to the screen edge */
+    .arrow{
+        font: bold 4rem Genericons;
+    }
+    .previous a{
+        margin-left: 5px;
+    }
+    .next a{
+        margin-right: 5px;
+    }
+}
