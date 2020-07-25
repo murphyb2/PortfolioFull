@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectDetail } from "../../actions/projects";
 import { useParams } from "react-router-dom";
-import Highlight from "./Highlight";
+import { Highlight } from "./Highlight";
 
 const ProjectDetail = () => {
   // Get the project ID from the URL ID parameter

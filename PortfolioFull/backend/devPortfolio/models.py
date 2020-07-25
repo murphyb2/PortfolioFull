@@ -13,10 +13,10 @@ class TechTag(models.Model):
 class TechKeywords(models.Model):
     keywords = models.TextField(max_length=1000)
 
-    verbose_name_plural = "Tech Keywords"
+    verbose_name_plural = "Keywords"
 
     def __str__(self):
-        return self.keywords
+        return ("Keywords")
 
 
 class Project(models.Model):

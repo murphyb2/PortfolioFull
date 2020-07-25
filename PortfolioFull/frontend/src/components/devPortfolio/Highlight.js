@@ -1,6 +1,6 @@
 import React from "react";
 
-const Highlight = ({ text, exp }) => {
+export const Highlight = ({ text, exp }) => {
   if (!exp) return <></>;
 
   var words = text ? text.split(" ") : "";
@@ -21,5 +21,3 @@ const Highlight = ({ text, exp }) => {
 
   return <>{processed}</>;
 };
-
-export default Highlight;
