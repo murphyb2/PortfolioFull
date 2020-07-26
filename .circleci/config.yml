@@ -23,9 +23,9 @@ jobs:
 workflows:
   main:
     jobs:
-      - release
-        filters:
-          branches:
-            only:
-              - master
-        #       - staging
+      - release:
+          filters:
+            branches:
+              only:
+                - master
+          #       - staging
