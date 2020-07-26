@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/app
     # executor: python/default
     docker:
-      - image: circleci/python:default
+      - image: circleci/python@0.2.1
     steps:
       - checkout
       - run:
