@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  release:
+    working_directory: ~/app
+    # executor: python/default
+    docker:
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run:
+          name: Installing deployment dependencies
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            pip install --upgrade setuptools
+            pip install awsebcli --upgrade
+      - run:
+          name: Deploying
+          command: eb deploy Devportfolio-env
+
+workflows:
+  main:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only:
+                - master
+          #       - staging

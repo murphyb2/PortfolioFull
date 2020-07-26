@@ -4,10 +4,12 @@ PortfolioFull/media/
 *.zip
 *.pyc
 /__pycache__/*
+
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# .elasticbeanstalk/*
+# !.elasticbeanstalk/*.cfg.yml
+# !.elasticbeanstalk/*.global.yml
+
 PortfolioFull/backend/subway/final - Copy.csv
 PortfolioFull/backend/subway/merged_df.csv
 PortfolioFull/backend/subway/data_test.py
