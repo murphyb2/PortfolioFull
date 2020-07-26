@@ -19,8 +19,8 @@ jobs:
       - run:
           name: Deploying
           command: |
-          eb init
-          eb deploy
+            eb init
+            eb deploy
 
 workflows:
   main:
