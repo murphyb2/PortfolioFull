@@ -18,7 +18,9 @@ jobs:
             pip install awsebcli --upgrade
       - run:
           name: Deploying
-          command: eb deploy
+          command: |
+          eb init
+          eb deploy
 
 workflows:
   main:
