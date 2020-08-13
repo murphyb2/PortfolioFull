@@ -41,7 +41,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 class AboutSerializer(serializers.ModelSerializer):
     class Meta:
         model = About
-        fields = (
-            'prof_pic',
-            'description'
-        )
+        fields = '__all__'
+        # fields = (
+        #     'prof_pic',
+        #     'description'
+        # )

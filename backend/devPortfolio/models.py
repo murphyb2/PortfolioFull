@@ -39,6 +39,8 @@ class About(models.Model):
     description = models.TextField(max_length=2000, blank=True)
     prof_pic = models.ImageField(upload_to='pictures/profilePic', null=True)
 
+    resume = models.FileField(upload_to='files/resume', blank=True)
+
     verbose_name_plural = "About"
 
     def __str__(self):

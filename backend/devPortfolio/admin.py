@@ -11,7 +11,7 @@ admin.site.register(Project, ProjectAdmin)
 
 
 class AboutAdmin(admin.ModelAdmin):
-    list_display = ('id', 'description', 'prof_pic')
+    list_display = ('id', 'description', 'prof_pic', 'resume')
 
 
 admin.site.register(About, AboutAdmin)

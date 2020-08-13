@@ -40,6 +40,7 @@
     "react-geocode": "^0.2.1",
     "react-google-autocomplete": "^1.2.4",
     "react-google-maps": "^9.4.5",
+    "react-pdf": "^4.2.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^4.4.1",
