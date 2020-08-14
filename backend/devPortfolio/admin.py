@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.devPortfolio.models import Project, About, TechTag, TechKeywords
+from backend.devPortfolio.models import Project, About, TechTag, TechKeywords, CertDoc
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -29,3 +29,10 @@ class TechKeywordsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(TechKeywords, TechKeywordsAdmin)
+
+
+class CertDocAdmin(admin.ModelAdmin):
+    list_display = ('id', 'doc', 'title')
+
+
+admin.site.register(CertDoc, CertDocAdmin)

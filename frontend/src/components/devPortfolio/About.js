@@ -11,7 +11,7 @@ const About = () => {
     dispatch(getAbout(1));
   }, []);
 
-  const { description, prof_pic, resume } = about;
+  const { description, prof_pic, resume, certs } = about;
 
   return (
     <Fragment>
@@ -38,17 +38,30 @@ const About = () => {
             </div>
           </div>
           {/* DOCS */}
+          <h3>Docs/</h3>
           <div className="row">
             <div className="col">
-              <h3>Docs/</h3>
+              <h4>Resume/</h4>
               <div className="row">
                 <div className="col">
-                  Resume
-                  <DocModal doc={resume} />
+                  <div className="row justify-content-center my-2">
+                    <DocModal doc={resume} title="Resume" />
+                  </div>
                 </div>
+              </div>
+              <h4>Certs/</h4>
+              <div className="row">
                 <div className="col">
-                  Certs
-                  <DocModal doc={resume} />
+                  {certs
+                    ? certs.map((cert) => (
+                        <div
+                          key={cert.id}
+                          className="row justify-content-center my-3"
+                        >
+                          <DocModal doc={cert.doc} title={cert.title} />
+                        </div>
+                      ))
+                    : ""}
                 </div>
               </div>
             </div>
