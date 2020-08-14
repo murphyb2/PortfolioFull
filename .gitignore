@@ -1,6 +1,6 @@
 node_modules
 .vscode/settings.json
-PortfolioFull/media/
+/media/*
 *.zip
 *.pyc
 /__pycache__/*

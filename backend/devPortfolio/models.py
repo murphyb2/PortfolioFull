@@ -10,6 +10,14 @@ class TechTag(models.Model):
         return self.tech
 
 
+class CertDoc(models.Model):
+    doc = models.FileField(upload_to='files/certs')
+    title = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title
+
+
 class TechKeywords(models.Model):
     keywords = models.TextField(max_length=1000)
 
@@ -38,6 +46,9 @@ class Project(models.Model):
 class About(models.Model):
     description = models.TextField(max_length=2000, blank=True)
     prof_pic = models.ImageField(upload_to='pictures/profilePic', null=True)
+
+    resume = models.FileField(upload_to='files/resume', blank=True)
+    certs = models.ManyToManyField(CertDoc, blank=True)
 
     verbose_name_plural = "About"
 
