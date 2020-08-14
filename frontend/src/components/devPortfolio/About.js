@@ -1,8 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAbout } from "../../actions/about";
-import { Document, Page, pdfjs } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import { DocModal } from "./DocModal";
 
 const About = () => {
   const dispatch = useDispatch();
@@ -45,15 +44,11 @@ const About = () => {
               <div className="row">
                 <div className="col">
                   Resume
-                  <Document file={resume} className="mx-auto">
-                    <Page pageNumber={1} />
-                  </Document>
+                  <DocModal doc={resume} />
                 </div>
                 <div className="col">
                   Certs
-                  <Document file={resume} className="mx-auto">
-                    <Page pageNumber={1} />
-                  </Document>
+                  <DocModal doc={resume} />
                 </div>
               </div>
             </div>
