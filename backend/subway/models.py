@@ -15,6 +15,11 @@ from folium.map import Layer
 class MapPrep(models.Model):
     """Updates map file when needed"""
 
+    @property
+    def is_up_to_date(self):
+
+        return true
+
     def __normalize_entries__(self, record):
         # Normalize the data between 0 and 1
         max_entries = record.entries.max()

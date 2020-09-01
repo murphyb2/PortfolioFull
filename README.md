@@ -13,6 +13,7 @@ Apps include:
 See requirements.txt in this repository.
 
 ## Deployment
+The repository is integrated with CircleCI to automatically deploy the master branch to production each time a new pull request is completed.
 
 This web app is deployed using Amazon Web Services tools. 
 Namely:
