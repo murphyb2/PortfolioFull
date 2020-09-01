@@ -12,7 +12,7 @@ def index(request):
 
     mp = MapPrep()
     # tstart = datetime.now()
-    if(not mp.is_up_to_date()):
+    if(not mp.is_up_to_date):
         mp.update_map()
     # tdelta = datetime.now() - tstart
     # print(tdelta)
