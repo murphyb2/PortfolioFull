@@ -18,7 +18,7 @@ class MapPrep(models.Model):
     @property
     def is_up_to_date(self):
 
-        return true
+        return True
 
     def __normalize_entries__(self, record):
         # Normalize the data between 0 and 1
