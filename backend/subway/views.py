@@ -11,10 +11,11 @@ def index(request):
     """View function for main page of site"""
 
     mp = MapPrep()
-    tstart = datetime.now()
-    mp.update_map()
-    tdelta = datetime.now() - tstart
-    print(tdelta)
+    # tstart = datetime.now()
+    if(not mp.is_up_to_date()):
+        mp.update_map()
+    # tdelta = datetime.now() - tstart
+    # print(tdelta)
     currentYear = datetime.now().year
     context = {
         'currentYear': currentYear
