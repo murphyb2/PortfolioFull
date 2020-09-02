@@ -104,10 +104,10 @@ class MapPrep(models.Model):
 
         # Apply Heat Map of entries into station
         folium.plugins.HeatMapWithTime(
-            hm_with_time_entries, index=date_index, radius=25, control=True, name='Entries').add_to(m)
+            hm_with_time_entries, index=date_index, radius=30, control=True, name='Entries').add_to(m)
         # Apply Heat Map of exits into station
         HeatMapWithTimeAdditional(
-            hm_with_time_exits, radius=25, control=True, name='Exits', show=False).add_to(m)
+            hm_with_time_exits, radius=30, control=True, name='Exits', show=False).add_to(m)
 
         # Create subway lines layer
         lines = os.path.join('', 'backend/subway/SubwayLines.geojson')
