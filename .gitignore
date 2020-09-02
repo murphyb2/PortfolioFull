@@ -4,6 +4,7 @@ node_modules
 *.zip
 *.pyc
 /__pycache__/*
+data_test.csv
 
 # Elastic Beanstalk Files
 # .elasticbeanstalk/*

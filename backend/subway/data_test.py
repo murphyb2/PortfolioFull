@@ -50,10 +50,10 @@ class HeatMapWithTimeAdditional(Layer):
         self.gradient = gradient
 
 
-def __normalize_entries__(record):
+def __normalize_entries__(record, max_entries, min_entries):
     # Normalize the data between 0 and 1
-    max_entries = record.entries.max()
-    min_entries = record.entries.min()
+    # max_entries = record.entries.max()
+    # min_entries = record.entries.min()
 
     # Could do this step in the assign below, but this is clearer
     norm_entries = record.entries.apply(
@@ -68,10 +68,10 @@ def __normalize_entries__(record):
     return hm_df.values.tolist()
 
 
-def __normalize_exits__(record):
+def __normalize_exits__(record, max_exits, min_exits):
     # Normalize the data between 0 and 1
-    max_exits = record.exits.max()
-    min_exits = record.exits.min()
+    # max_exits = record.exits.max()
+    # min_exits = record.exits.min()
 
     # Could do this step in the assign below, but this is clearer
     norm_exits = record.exits.apply(
@@ -107,6 +107,11 @@ hm_with_time_entries = []
 hm_with_time_exits = []
 # print(dates)
 
+max_entries = station_data.entries.max()
+min_entries = station_data.entries.min()
+max_exits = station_data.exits.max()
+min_exits = station_data.exits.min()
+
 for date in dates:
     # Create the time index array
     date_index.append(str(date))
@@ -114,8 +119,10 @@ for date in dates:
     # Rows for given date
     record = station_data[station_data.date == date]
 
-    hm_with_time_entries.append(__normalize_entries__(record))
-    hm_with_time_exits.append(__normalize_exits__(record))
+    hm_with_time_entries.append(
+        __normalize_entries__(record, max_entries, min_entries))
+    hm_with_time_exits.append(
+        __normalize_exits__(record, max_exits, min_exits))
 
 
 #### Create map object ####
