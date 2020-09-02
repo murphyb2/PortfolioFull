@@ -18,7 +18,7 @@ class MapPrep(models.Model):
     @property
     def is_up_to_date(self):
 
-        return True
+        return False
 
     def __normalize_entries__(self, record, max_entries, min_entries):
         # Normalize the data between 0 and 1
@@ -81,6 +81,7 @@ class MapPrep(models.Model):
         min_entries = station_data.entries.min()
         max_exits = station_data.exits.max()
         min_exits = station_data.exits.min()
+
         for date in dates:
             # Create the time index array
             date_index.append(str(date))
@@ -102,9 +103,22 @@ class MapPrep(models.Model):
                        width='100%',
                        height=500)
 
+        locations = station_data[['gtfs_latitude', 'gtfs_longitude']]
+        locations.drop_duplicates(inplace=True, ignore_index=True)
+
+        folium.plugins.FastMarkerCluster(
+            locations, name="Stations",
+            control=True, show=False,
+        ).add_to(m)
+        # callback="""function (a) {
+        #     // a.layer is actually a cluster
+        #     return a.push("Station Name");
+        # }"""
+
         # Apply Heat Map of entries into station
         folium.plugins.HeatMapWithTime(
             hm_with_time_entries, index=date_index, radius=30, control=True, name='Entries').add_to(m)
+
         # Apply Heat Map of exits into station
         HeatMapWithTimeAdditional(
             hm_with_time_exits, radius=30, control=True, name='Exits', show=False).add_to(m)
