@@ -6,6 +6,7 @@ jobs:
     # executor: python/default
     docker:
       - image: circleci/python:latest
+      - image: node
     steps:
       - checkout
       - run:
