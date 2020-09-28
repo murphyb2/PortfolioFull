@@ -6,7 +6,6 @@ jobs:
     # executor: python/default
     docker:
       - image: circleci/python:latest
-      - image: circleci/node:latest
     steps:
       - checkout
       - run:
@@ -17,12 +16,6 @@ jobs:
             sudo apt-get install python-pip python-dev build-essential
             pip install --upgrade setuptools
             pip install awsebcli --upgrade
-      - run:
-          name: Building production frontend
-          working_directory: /
-          command: |
-            npm i
-            npm run build
       - run:
           name: Deploying
           command: eb deploy Devportfolio-env
@@ -35,5 +28,4 @@ workflows:
             branches:
               only:
                 - master
-                - feature/cleanup-unsused-components
           #       - staging
