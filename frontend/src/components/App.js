@@ -10,10 +10,6 @@ import {
 } from "react-router-dom";
 import { createHashHistory } from "history";
 
-// Alerts
-import { Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
-
 // Redux
 import { Provider } from "react-redux";
 import store from "../store";
@@ -44,19 +40,17 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <Router history={history}>
-            <>
-              <Switch>
-                {/* Order matters here.. Hiking app doesnt use the same header/footer */}
-                <Route exact path="/hiking" component={Hiking} />
-                <Route path="/">
-                  <Projects />
-                </Route>
-              </Switch>
-            </>
-          </Router>
-        </AlertProvider>
+        <Router history={history}>
+          <>
+            <Switch>
+              {/* Order matters here.. Hiking app doesnt use the same header/footer */}
+              <Route exact path="/hiking" component={Hiking} />
+              <Route path="/">
+                <Projects />
+              </Route>
+            </Switch>
+          </>
+        </Router>
       </Provider>
     );
   }
