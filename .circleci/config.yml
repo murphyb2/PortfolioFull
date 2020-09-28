@@ -32,5 +32,5 @@ workflows:
             branches:
               only:
                 - master
-                - feature/cleanup-unused-components
+                - feature/cleanup-unsused-components
           #       - staging
