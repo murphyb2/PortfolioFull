@@ -17,6 +17,10 @@ jobs:
             pip install --upgrade setuptools
             pip install awsebcli --upgrade
       - run:
+          name: Building production frontend
+          working_directory: /
+          command: npm run build
+      - run:
           name: Deploying
           command: eb deploy Devportfolio-env
 
@@ -28,4 +32,5 @@ workflows:
             branches:
               only:
                 - master
+                - feature/cleanup-unused-components
           #       - staging
