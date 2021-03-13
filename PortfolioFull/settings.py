@@ -22,6 +22,7 @@ ALLOWED_HOSTS = [
     'bryan-murphy-dev.com',
     'bryan-murphy.com',
     'www.bryan-murphy.com',
+    'dev-portfolio-murphy.herokuapp.com'
 ]
 
 
